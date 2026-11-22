@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Himanshu Badiwal — Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --navy: #1b2a4a;
+      --navy-dark: #14213a;
+      --gray-text: #5c6470;
+      --sidebar-bg: #f4f5f7;
+      --line: #e2e4e8;
+      --red: #e8543c;
+      --blue: #2f6fed;
+      --teal: #1b7a6b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #7c8592;
+      color: #2b2f38;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--navy-dark);
+      padding: 9px 20px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .toolbar button {
+      background: var(--red);
+      color: #fff;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 5px;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: background 0.2s ease;
+    }
+
+    .toolbar button:hover {
+      background: #d43d26;
+    }
+
+    .toolbar button.secondary {
+      background: #37456b;
+    }
+
+    .toolbar button.secondary:hover {
+      background: #475887;
+    }
+
+    .toolbar .hint {
+      color: #c7cce0;
+      font-size: 12px;
+    }
+
+    /* 1-PAGE A4 CONTAINER */
+    .page {
+      width: 210mm;
+      height: 297mm;
+      min-height: 297mm;
+      max-height: 297mm;
+      margin: 20px auto;
+      background: #fff;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    [contenteditable="true"] {
+      outline: none;
+    }
+
+    [contenteditable="true"]:hover {
+      outline: 1px dashed #b9c0cc;
+      outline-offset: 2px;
+    }
+
+    [contenteditable="true"]:focus {
+      outline: 1px dashed var(--blue);
+      outline-offset: 2px;
+      background: rgba(47, 111, 237, 0.04);
+    }
+
+    /* HEADER */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 24px 34px 14px 34px;
+      border-bottom: 3px double var(--navy);
+      flex: none;
+    }
+
+    .header-left {
+      flex: 1;
+    }
+
+    .name {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      color: var(--navy);
+      margin: 0 0 2px 0;
+    }
+
+    .title {
+      font-size: 12px;
+      color: var(--gray-text);
+      letter-spacing: 0.3px;
+      margin: 0 0 9px 0;
+      font-weight: 600;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px 16px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 10px;
+      color: #3d4451;
+    }
+
+    .contact-item a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .contact-item a:hover {
+      text-decoration: underline;
+      color: var(--blue);
+    }
+
+    .icon-dot {
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      flex: none;
+      font-size: 8.5px;
+    }
+
+    .icon-dot svg,
+    .icon-dot i {
+      display: block;
+      margin: auto;
+    }
+
+    .icon-dot.phone {
+      background: var(--red);
+    }
+
+    .icon-dot.email {
+      background: var(--blue);
+    }
+
+    .icon-dot.linkedin {
+      background: #0a66c2;
+    }
+
+    .icon-dot.instagram {
+      background: #e1306c;
+    }
+
+    .icon-dot.loc {
+      background: var(--navy);
+    }
+
+    .avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: #fff;
+      font-size: 20px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: none;
+      line-height: 1;
+      text-align: center;
+      border: 3px solid #d9dde5;
+      letter-spacing: 1px;
+    }
+
+    /* BODY GRID */
+    .body-grid {
+      display: flex;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .main-col {
+      width: 62%;
+      padding: 14px 20px 14px 34px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .side-col {
+      width: 38%;
+      background: var(--sidebar-bg);
+      padding: 14px 20px 14px 18px;
+      border-left: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .section {
+      margin-bottom: 11px;
+    }
+
+    .section:last-child {
+      margin-bottom: 0;
+    }
+
+    .sec-title {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+      margin: 0 0 7px 0;
+      padding-bottom: 3px;
+      border-bottom: 1.5px solid var(--navy);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .sec-title .sq {
+      width: 5px;
+      height: 5px;
+      background: var(--red);
+      display: inline-block;
+      transform: rotate(45deg);
+    }
+
+    p {
+      margin: 0 0 4px 0;
+      font-size: 10px;
+      line-height: 1.45;
+      color: #3d4451;
+    }
+
+    /* SUMMARY */
+    .summary-text {
+      font-size: 10px;
+      line-height: 1.48;
+      color: #3d4451;
+    }
+
+    /* EXPERIENCE */
+    .job {
+      margin-bottom: 9px;
+    }
+
+    .job:last-child {
+      margin-bottom: 0;
+    }
+
+    .job-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 1px;
+    }
+
+    .job-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .job-date {
+      font-size: 9px;
+      color: #fff;
+      background: var(--navy);
+      padding: 1px 6px;
+      border-radius: 8px;
+      white-space: nowrap;
+      font-weight: 600;
+    }
+
+    .job-company {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--teal);
+      margin-bottom: 1px;
+    }
+
+    .job-loc {
+      font-size: 9px;
+      color: var(--gray-text);
+      margin-bottom: 3px;
+      font-style: italic;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .job-bullets {
+      margin: 0;
+      padding-left: 13px;
+      font-size: 9.6px;
+      line-height: 1.42;
+      color: #3d4451;
+    }
+
+    .job-bullets li {
+      margin-bottom: 2.5px;
+    }
+
+    .job-bullets li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* PROJECTS / PORTFOLIO */
+    .proj-item {
+      margin-bottom: 8px;
+    }
+
+    .proj-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .proj-title {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 1px;
+    }
+
+    .proj-tag {
+      font-size: 9px;
+      color: var(--red);
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .proj-desc {
+      font-size: 9.6px;
+      color: #4b5563;
+      line-height: 1.4;
+    }
+
+    /* EDUCATION */
+    .edu-item {
+      margin-bottom: 7px;
+    }
+
+    .edu-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .edu-degree {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .edu-school {
+      font-size: 10px;
+      color: var(--teal);
+      font-weight: 600;
+    }
+
+    .edu-meta {
+      font-size: 9px;
+      color: var(--gray-text);
+      line-height: 1.35;
+    }
+
+    /* SKILLS */
+    .skill-group {
+      margin-bottom: 7px;
+    }
+
+    .skill-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .skill-group-title {
+      font-size: 9.8px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 2.5px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px;
+    }
+
+    .skill-tag {
+      font-size: 8.6px;
+      background: #fff;
+      border: 1px solid #d3d7e0;
+      color: #374151;
+      padding: 1.2px 5px;
+      border-radius: 3px;
+      line-height: 1.3;
+    }
+
+    /* SIDE ITEMS */
+    .side-item {
+      margin-bottom: 7px;
+    }
+
+    .side-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .side-item-title {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 1px;
+    }
+
+    .side-item-desc {
+      font-size: 9.2px;
+      color: var(--gray-text);
+      line-height: 1.38;
+    }
+
+    @media print {
+
+      html,
+      body {
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #fff !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .toolbar {
+        display: none !important;
+      }
+
+      .page {
+        margin: 0 !important;
+        box-shadow: none !important;
+        width: 210mm !important;
+        height: 297mm !important;
+        min-height: 297mm !important;
+        max-height: 297mm !important;
+        overflow: hidden !important;
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+
+      [contenteditable="true"]:hover,
+      [contenteditable="true"]:focus {
+        outline: none !important;
+        background: transparent !important;
+      }
+
+      @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOOLBAR -->
+  <div class="toolbar">
+    <button onclick="window.print()">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 9V2h12v7"></path>
+        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+        <rect width="12" height="8" x="6" y="14"></rect>
+      </svg>
+      Print / Save as PDF (1 Page)
+    </button>
+    <a href="index.html" style="text-decoration: none;">
+      <button class="secondary" type="button">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+        Back to Portfolio
+      </button>
+    </a>
+    <span class="hint">Single-Page A4 Resume &bull; Click any text to edit directly</span>
+  </div>
+
+  <!-- SINGLE PAGE A4 -->
+  <div class="page" id="resumePage">
+
+    <!-- HEADER (No Profile Image) -->
+    <div class="header">
+      <div class="header-left">
+        <h1 class="name" contenteditable="true">HIMANSHU BADIWAL</h1>
+        <div class="title" contenteditable="true">Digital Marketing Executive | Social Media Manager | Content Creator</div>
+        <div class="contact-row">
+          <div class="contact-item">
+            <span class="icon-dot phone">
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                </path>
+              </svg>
+            </span>
+            <span contenteditable="true">+91 8696960025</span>
+          </div>
+          <div class="contact-item">
+            <span class="icon-dot email">
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+            </span>
+            <span contenteditable="true">himanshukumawatbadiwal3@gmail.com</span>
+          </div>
+          <div class="contact-item">
+            <span class="icon-dot linkedin">
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+              </svg>
+            </span>
+            <span contenteditable="true"><a href="https://www.linkedin.com/in/himanshu-badiwal/" target="_blank">linkedin.com/in/himanshu-badiwal</a></span>
+          </div>
+          <div class="contact-item">
+            <span class="icon-dot instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </span>
+            <span contenteditable="true"><a href="https://instagram.com/himanshu__unfiltered" target="_blank">@himanshu__unfiltered</a></span>
+          </div>
+          <div class="contact-item">
+            <span class="icon-dot loc">
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            </span>
+            <span contenteditable="true">Jaipur, Rajasthan, India</span>
+          </div>
+        </div>
+      </div>
+      <div class="avatar" contenteditable="true">HB</div>
+    </div>
+
+    <!-- BODY GRID -->
+    <div class="body-grid">
+
+      <!-- MAIN COLUMN -->
+      <div class="main-col">
+
+        <!-- PROFILE SUMMARY (FRESHER FOCUSED) -->
+        <div class="section">
+          <div class="sec-title"><span class="sq"></span>Professional Summary</div>
+          <p class="summary-text" contenteditable="true">Tech-savvy <strong>BCA Graduate (2026)</strong> and aspiring <strong>Digital Marketing & Content Executive</strong> with practical exposure in social media management, short-form video creation, and 2.5+ years of operational e-commerce support. Proficient in mobile videography, VN Video Editor cutdowns, Canva visual design, and Meta Business Suite scheduling. Combines analytical problem-solving with creative storytelling to build engaging brand content and drive organic social growth.
+          </p>
+        </div>
+
+        <!-- WORK & PRACTICAL EXPERIENCE -->
+        <div class="section">
+          <div class="sec-title"><span class="sq"></span>Experience & Freelance</div>
+
+          <!-- JOB 1 -->
+          <div class="job">
+            <div class="job-head">
+              <span class="job-title" contenteditable="true">Freelance Content Creator & Social Media Assistant</span>
+              <span class="job-date" contenteditable="true">2024 – Present</span>
+            </div>
+            <div class="job-company" contenteditable="true">Self-Employed (Freelance Projects)</div>
+            <div class="job-loc" contenteditable="true">
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>Jaipur, India
+            </div>
+            <ul class="job-bullets" contenteditable="true">
+              <li>Created, shot, and edited short-form Reels/Shorts and visual carousels using <strong>VN Video Editor</strong> and <strong>Canva</strong>.</li>
+              <li>Monitored viral audio trends and engineered 3-second retention hooks tailored to target audience demographics.</li>
+              <li>Managed end-to-end smartphone production, color grading, caption drafting, and post scheduling via <strong>Meta Business Suite</strong>.</li>
+            </ul>
+          </div>
+
+          <!-- JOB 2 -->
+          <div class="job">
+            <div class="job-head">
+              <span class="job-title" contenteditable="true">Customer Support Executive (E-Commerce Operations)</span>
+              <span class="job-date" contenteditable="true">Mar 2024 – Oct 2026</span>
+            </div>
+            <div class="job-company" contenteditable="true">E-Commerce Organization</div>
+            <div class="job-loc" contenteditable="true">
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>Jaipur, India
+            </div>
+            <ul class="job-bullets" contenteditable="true">
+              <li>Handled client communications across order fulfillment, delivery tracking, and returns to ensure high customer satisfaction.</li>
+              <li>Observed buyer behavior and assisted in analyzing Return to Origin (RTO) friction points across <strong>Shopify, Amazon, and Flipkart</strong>.</li>
+              <li>Gathered consumer insights and objections, sharing feedback with teams to help refine marketing copy and product presentation.</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- FEATURED PROJECTS & CASE STUDIES -->
+        <div class="section">
+          <div class="sec-title"><span class="sq"></span>Featured Projects & Campaigns</div>
+
+          <!-- PROJECT 1 -->
+          <div class="proj-item">
+            <div class="proj-title" contenteditable="true">Dastoor Makeovers — Bridal Makeover Reels & Client Inquiries</div>
+            <div class="proj-tag" contenteditable="true">Mobile Filming &bull; VN Video Editor &bull; Trend Sync &bull; Jaipur Focus</div>
+            <p class="proj-desc" contenteditable="true">Produced 15+ aesthetic transformation reels and client review carousels showcasing bridal work. Synchronized trending regional audio with captivating hook captions to boost local bridal inquiries.</p>
+          </div>
+
+          <!-- PROJECT 2 -->
+          <div class="proj-item">
+            <div class="proj-title" contenteditable="true">Personal Brand (@himanshu__unfiltered) — Creator Experiment</div>
+            <div class="proj-tag" contenteditable="true">On-Camera Vlogging &bull; UGC &bull; Script Testing &bull; AI Hook Engineering</div>
+            <p class="proj-desc" contenteditable="true">Created direct-to-camera mini-vlogs in Jaipur to develop camera confidence, fast-paced cut pacing, and retention testing. Used ChatGPT and Gemini to brainstorm non-cliché opening hooks.</p>
+          </div>
+
+          <!-- PROJECT 3 -->
+          <div class="proj-item">
+            <div class="proj-title" contenteditable="true">GrowthHex & Prospyrity — Educational Graphics & Carousels</div>
+            <div class="proj-tag" contenteditable="true">Canva Pro &bull; Carousel Design &bull; Social Media Copy &bull; Call-to-Actions</div>
+            <p class="proj-desc" contenteditable="true">Designed swipeable educational marketing carousels and brand templates, pairing value-focused captions with clear CTAs to guide traffic to bio links.</p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- SIDE COLUMN -->
+      <div class="side-col">
+
+        <!-- EDUCATION (PROMINENT FOR FRESHER) -->
+        <div class="section">
+          <div class="sec-title"><span class="sq"></span>Education</div>
+
+          <div class="edu-item">
+            <div class="edu-degree" contenteditable="true">Bachelor of Computer Applications (BCA)</div>
+            <div class="edu-school" contenteditable="true">University of Technology, Jaipur</div>
+            <div class="edu-meta" contenteditable="true">Graduated 2026 | Jaipur, Rajasthan<br>Focus: Web Basics, Databases & Digital Tools</div>
+          </div>
+
+          <div class="edu-item">
+            <div class="edu-degree" contenteditable="true">Senior Secondary (12th Grade - PCM)</div>
+            <div class="edu-school" contenteditable="true">Science Stream (Physics, Chemistry, Maths)</div>
+            <div class="edu-meta" contenteditable="true">Analytical problem-solving foundation</div>
+          </div>
+        </div>
+
+        <!-- KEY SKILLS -->
+        <div class="section">
+          <div class="sec-title"><span class="sq"></span>Skills & Tools</div>
+
+          <div class="skill-group">
+            <div class="skill-group-title" contenteditable="true">Social Media & Growth</div>
+            <div class="skill-tags" contenteditable="true">
+              <span class="skill-tag">Instagram SEO</span>
+              <span class="skill-tag">Page Optimization</span>
+              <span class="skill-tag">Trend Research</span>
+              <span class="skill-tag">Hook Writing</span>
+              <span class="skill-tag">Content Calendars</span>
+              <span class="skill-tag">Hashtags</span>
+              <span class="skill-tag">Audience Personas</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-title" contenteditable="true">Content Creation & Video</div>
+            <div class="skill-tags" contenteditable="true">
+              <span class="skill-tag">Smartphone Videography</span>
+              <span class="skill-tag">VN Video Editor</span>
+              <span class="skill-tag">Reels / Shorts</span>
+              <span class="skill-tag">Canva Pro</span>
+              <span class="skill-tag">Talking-Head Videos</span>
+              <span class="skill-tag">UGC Creation</span>
+              <span class="skill-tag">Carousel Design</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-title" contenteditable="true">E-Commerce & Digital Ops</div>
+            <div class="skill-tags" contenteditable="true">
+              <span class="skill-tag">Shopify Admin</span>
+              <span class="skill-tag">Amazon & Flipkart</span>
+              <span class="skill-tag">RTO Awareness</span>
+              <span class="skill-tag">Customer Support</span>
+              <span class="skill-tag">Order Tracking</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-title" contenteditable="true">AI & Office Tools</div>
+            <div class="skill-tags" contenteditable="true">
+              <span class="skill-tag">ChatGPT</span>
+              <span class="skill-tag">Google Gemini</span>
+              <span class="skill-tag">Meta Business Suite</span>
+              <span class="skill-tag">MS Excel</span>
+              <span class="skill-tag">Google Sheets</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5-STEP WORKFLOW SUMMARY -->
+        <div class="section">
+          <div class="sec-title"><span class="sq"></span>Content Workflow</div>
+          <p style="font-size: 9px; line-height: 1.4; color: var(--gray-text); margin: 0;" contenteditable="true">
+            <strong>1. Trend Research</strong> (Viral audio & competitors)<br>
+            <strong>2. Hook Scripting</strong> (3-sec scroll-stopper)<br>
+            <strong>3. Mobile Shoot</strong> (Lighting, audio & framing)<br>
+            <strong>4. Fast-Cut Edit</strong> (VN Video Editor & captions)<br>
+            <strong>5. Meta Optimization</strong> (Hashtags, SEO & CTAs)
+          </p>
+        </div>
+
+        <!-- KEY ATTRIBUTES & LANGUAGES -->
+        <div class="section">
+          <div class="sec-title"><span class="sq"></span>Highlights & Strengths</div>
+
+          <div class="side-item">
+            <div class="side-item-title" contenteditable="true">Camera Confidence</div>
+            <div class="side-item-desc" contenteditable="true">Natural communicator on video, well-suited for talking-head vlogs & brand product demos.</div>
+          </div>
+
+          <div class="side-item">
+            <div class="side-item-title" contenteditable="true">Tech & Creative Mix</div>
+            <div class="side-item-desc" contenteditable="true">BCA logic combined with visual design and social media enthusiasm.</div>
+          </div>
+
+          <div class="side-item">
+            <div class="side-item-title" contenteditable="true">Languages</div>
+            <div class="side-item-desc" contenteditable="true">English (Professional) &bull; Hindi (Native)</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

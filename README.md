@@ -22,6 +22,7 @@ Then visit `http://localhost:8000`.
 
 ## 📁 Key Files
 - [index.html](file:///d:/Work/portfolios/portfolio/index.html) - Complete single-page portfolio website
+- [resume.html](file:///d:/Work/portfolios/portfolio/resume.html) - Single-page print-ready A4 resume (tailored for fresher/entry-level, no profile image, editable, 1-page PDF export)
 - [himanshu-badiwal.jpg](file:///d:/Work/portfolios/portfolio/himanshu-badiwal.jpg) - Profile photo
 - [himanshu_badiwal_professional_portfolio.md](file:///d:/Work/portfolios/portfolio/himanshu_badiwal_professional_portfolio.md) - Source portfolio & resume documentation
 
